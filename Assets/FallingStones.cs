@@ -25,7 +25,7 @@ public class FallingStones : MonoBehaviour
     public Transform gameobject;
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.tag == "Floor")
+        if (col.gameObject.tag == "Floor" || col.gameObject.tag == "player")
         {
             Destroy(gameObject);
 
