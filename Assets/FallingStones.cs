@@ -5,34 +5,31 @@ using UnityEngine;
 public class FallingStones : MonoBehaviour
 {
     public GameObject rockboi;
-    public GameObject RockSpawn;
+    public GameObject[] RockSpawn;
+    public GameObject Character;
 
-    // Start is called before the first frame update
+    public int rockCount;
+    public bool alive;
+
+
     void Start()
     {
-        RockSpawn = GameObject.Find("RockSpawn");
+        alive = true;
+        rockCount = 0;
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public void OnCollisionEnter2D(Collision2D col)
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (col.gameObject.tag == "Character")
         {
-            Instantiate(rockboi, new Vector3(0, 5, 0), Quaternion.identity);
+            alive = false;
         }
-    }
 
-    public Transform gameobject;
-    private void OnCollisionEnter2D(Collision2D col)
-    {
-        if (col.gameObject.tag == "Floor" || col.gameObject.tag == "player")
+        if (col.gameObject.tag == "Floor" || col.gameObject.tag == "Character")
         {
             Destroy(gameObject);
-
         }
-
     }
-      
-
 
 }

@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Floor
   - RockSpawn
+  - rockboi
+  - Character
+  - fooker
   layers:
   - Default
   - TransparentFX
