@@ -4,14 +4,20 @@ using UnityEngine;
 
 public class StalDownSpawner : MonoBehaviour
 {
-    public float feckerTime;
-    public float lastFecker;
-    public GameObject Fecker;
+    public float spawnTime;
+    public float lastSpawn;
+    public GameObject Stalagtite;
+
+    private void Start()
+    {
+        lastSpawn = Random.Range(0f, 5f);
+    }
 
     void Update()
     {
 
-        if(Time.time > feckerTime + lastFecker)
+
+        if(Time.time > spawnTime + lastSpawn)
         {
             CreateFecker();
         }
@@ -19,8 +25,8 @@ public class StalDownSpawner : MonoBehaviour
 
     void CreateFecker()
     {
-        Instantiate(Fecker, transform.position, Quaternion.identity);
-        lastFecker = Random.Range(2, 7);
-        feckerTime = Time.time;
+        Instantiate(Stalagtite, transform.position, Quaternion.identity);
+        lastSpawn = Random.Range(2, 7);
+        spawnTime = Time.time;
     }
 }
