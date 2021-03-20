@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 7525adb463e3f4447a9d662a3fac58cc
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - rockboi: {fileID: 329134565731867816, guid: d991e888c39246c49adf63f110d43fe6, type: 3}
+  - Character: {fileID: 8400541146144086438, guid: 17842f67c65385a4aa630ded26e2f3f6, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
