@@ -9,7 +9,6 @@ public class SpawnManager : MonoBehaviour
     public Vector3 spawnPos;
     Rigidbody rockBody;
 
-    public int rockCount;
     public float spawnWait;
     public float startWait;
     public float waveWait;
@@ -25,6 +24,7 @@ public class SpawnManager : MonoBehaviour
         float distance;
         float speed = 10f;
         float step = speed * Time.deltaTime;
+
         InvokeRepeating("RockEnemies", 1, 5);
         transform.position = Vector2.MoveTowards(transform.position, NewWayPoint(), step);
         distance = transform.position.x - NewWayPoint().x;
@@ -43,7 +43,7 @@ public class SpawnManager : MonoBehaviour
 
         if (alive == false)
         {
-            EndGame();
+            GameOver();
         }
 
     }
@@ -56,23 +56,16 @@ public class SpawnManager : MonoBehaviour
         return newLocation;
     }
 
-    void RockEnemies()
+    void SpawnFallingRocks()
     {
         Instantiate(RockPrefab, transform.position, RockPrefab.transform.rotation);
         Vector3 randomTorque = new Vector3(0, 0, Random.Range(0, 5));
         rockBody.AddTorque(randomTorque);
-    }
-
-    public void SpawnFallingRocks()
-    {
-        rockCount = Random.Range(0, 14);
-        Instantiate(RockObject, transform.position, Quaternion.identity);
         rockSpawnDelay = Random.Range(1f, 4f);
         rockSpawnTime = Time.time;
     }
-    public void EndGame()
-    {
-        Instantiate(RockObject, transform.position, Quaternion.identity);
-    }
+
+    public void GameOver()
+    { }
 
 }

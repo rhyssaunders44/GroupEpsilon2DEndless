@@ -5,7 +5,6 @@ using UnityEngine;
 public class FallingStones : MonoBehaviour
 {
     public GameObject rockboi;
-    public GameObject[] RockSpawn;
     public GameObject Character;
 
     public int rockCount;
