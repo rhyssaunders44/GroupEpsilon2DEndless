@@ -4,25 +4,22 @@ using UnityEngine;
 
 public class FallingStones : MonoBehaviour
 {
-    public GameObject rockboi;
+    public GameObject Rock;
     public GameObject Character;
-
-    public int rockCount;
-    public bool alive;
-
+    public Rigidbody2D rockBody;
 
     void Start()
     {
-        alive = true;
-        rockCount = 0;
+        rockBody = GetComponent<Rigidbody2D>();
+        float randomTorque = Random.Range(-5,5);
+        rockBody.AddTorque(randomTorque);
     }
-
 
     public void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.tag == "Character")
         {
-            alive = false;
+            Destroy(gameObject);
         }
 
         if (col.gameObject.tag == "Floor" || col.gameObject.tag == "Character")

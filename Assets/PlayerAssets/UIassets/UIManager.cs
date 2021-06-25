@@ -19,8 +19,6 @@ public class UIManager : MonoBehaviour
     public float timeFactor;
 
     public GameObject OptionsMenu;
-    float hideOptionsMenu = 7;
-    float showOptionsMenu = 0;
 
     int tens = 0;
     int hund = 0;
@@ -34,7 +32,6 @@ public class UIManager : MonoBehaviour
     {
         volumeAdjust.SetFloat("volume", volume);
         volumePercent.text = (volume * 100).ToString() + " %";
-
     }
 
     public void Mute()
@@ -50,6 +47,7 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        pause = false;
         singleNum = 0;
     }
     void Update()
@@ -93,23 +91,33 @@ public class UIManager : MonoBehaviour
         scoreBoard[4].sprite = numbers[tenThous];
         #endregion
 
-        if (Input.GetKeyDown(KeyCode.P) && Time.time > 3f)
+        if ((Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)) && Time.time > 1f)
         {
-            OptionsEnable();
-            pause = true;
+            if (!pause)
+            {
+                pause = true;
+                OptionsEnable();
+
+            }
+            else
+            {
+                pause = false;
+                OptionsEnable();
+            }
+
         }
     }
 
     void OptionsEnable()
     {
-        if (pause == true)
+        if (pause)
         {
-            OptionsMenu.transform.position = new Vector2(OptionsMenu.transform.position.x, Mathf.Lerp(transform.position.y, showOptionsMenu, 3f));
+            OptionsMenu.SetActive(true);
             Time.timeScale = 0;
         }
         else
         {
-            OptionsMenu.transform.position = new Vector2(OptionsMenu.transform.position.x, Mathf.Lerp(transform.position.y, showOptionsMenu, 3f));
+            OptionsMenu.SetActive(false);
             Time.timeScale = 1;
         }
     }

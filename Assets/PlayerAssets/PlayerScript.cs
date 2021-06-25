@@ -23,6 +23,7 @@ public class PlayerScript : MonoBehaviour
         jumpNum = 0;
         thrust = 10f;
     }
+   
 
     public void Update()
     {
@@ -32,17 +33,24 @@ public class PlayerScript : MonoBehaviour
             jumpNum++;
         }
 
-        if (Input.GetKey(KeyCode.D) && grounded == true)
-        playerRigid.velocity = new Vector2(1, 0);
 
-        if (Input.GetKey(KeyCode.A) && grounded == true)
-            playerRigid.velocity = new Vector2(-7, 0);
-
-        if (alive == false)
+        if (!alive)
         {
             Character.SetActive(false);
+            GameOver();
         }
     }
+
+    public void FixedUpdate()
+    {
+        if (Input.GetKey(KeyCode.D) && grounded)
+            playerRigid.AddForce(Vector2.right * 6, ForceMode2D.Force);
+
+        if (Input.GetKey(KeyCode.A) && grounded)
+            playerRigid.AddForce(-Vector2.right * 12, ForceMode2D.Force);
+    }
+
+   
 
     public void OnCollisionEnter2D(Collision2D col)
     {
@@ -61,5 +69,10 @@ public class PlayerScript : MonoBehaviour
     public void OnCollisionExit2D(Collision2D collision)
     {
         grounded = false;
+    }
+
+    void GameOver()
+    {
+        Time.timeScale = 0;
     }
 }
