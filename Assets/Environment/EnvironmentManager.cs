@@ -55,6 +55,5 @@ public class EnvironmentManager : MonoBehaviour
         {
             yield return Time.timeScale = startup + Time.timeSinceLevelLoad - PlayerScript.deathTime;
         }
-
     }
 }
