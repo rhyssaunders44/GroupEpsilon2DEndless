@@ -144,7 +144,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 822f137e0e681814d9a86461f048e549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rockboi: {fileID: 0}
+  Rock: {fileID: 329134565731867816}
   Character: {fileID: 0}
-  rockCount: 0
-  alive: 0
+  rockBody: {fileID: 329134565731867817}

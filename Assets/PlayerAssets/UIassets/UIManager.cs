@@ -10,6 +10,10 @@ public class UIManager : MonoBehaviour
     public AudioMixer volumeAdjust;
     public AudioSource musicOutput;
     public Text volumePercent;
+    public GameObject GameOverMenu;
+    public GameObject AdvancedOptionsMenu;
+    public Text scoreEnd;
+    float gameoverTime;
 
     public Sprite[] numbers;
     public float score;
@@ -20,6 +24,9 @@ public class UIManager : MonoBehaviour
 
     public GameObject OptionsMenu;
 
+
+    //ints to keep the onscreen score working
+    //this should be an array and it makes me cry
     int tens = 0;
     int hund = 0;
     int thous = 0;
@@ -43,22 +50,33 @@ public class UIManager : MonoBehaviour
     public void ChangeScene(int sceneIndex)
     {
         SceneManager.LoadScene(sceneIndex);
+        singleNum = 0;
+        tens = 0;
+        hund = 0;
+        thous = 0;
+        tenThous = 0;
+        looper = 0;
+        arraykeeper = 0;
     }
 
     void Start()
     {
+        GameOverMenu.SetActive(false);
         pause = false;
         singleNum = 0;
     }
+
     void Update()
     {
         #region Score
-        timeFactor = Time.time * 3;
+        timeFactor = Time.timeSinceLevelLoad * 3;
 
         score = timeFactor - arraykeeper;
 
+
+        //this is gross
         singleNum = (int)score;
-        if (singleNum >= 10)
+        if (singleNum >= 10 || singleNum < 0)
         {
             singleNum = 0;
             looper++;
@@ -89,6 +107,8 @@ public class UIManager : MonoBehaviour
         scoreBoard[2].sprite = numbers[hund];
         scoreBoard[3].sprite = numbers[thous];
         scoreBoard[4].sprite = numbers[tenThous];
+        // looking back at how horrific the above is i want to fix it but wont.
+
         #endregion
 
         if ((Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)) && Time.time > 1f)
@@ -97,18 +117,22 @@ public class UIManager : MonoBehaviour
             {
                 pause = true;
                 OptionsEnable();
-
             }
             else
             {
                 pause = false;
                 OptionsEnable();
             }
-
         }
+
+        if (!PlayerScript.alive)
+        {
+            GameOver();
+        }
+
     }
 
-    void OptionsEnable()
+    public void OptionsEnable()
     {
         if (pause)
         {
@@ -122,9 +146,31 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void AdvancedOptions(bool on)
+    {
+        if (on)
+        {
+            AdvancedOptionsMenu.SetActive(false);
+        }
+        else
+        {
+            AdvancedOptionsMenu.SetActive(true);
+        }
+    }
+
     public void Quit()
     {
         Application.Quit();
+    }
+
+
+    public void GameOver()
+    {
+        Time.timeScale = 0;
+        GameOverMenu.SetActive(true);
+        gameoverTime = Time.time;
+        //this makes me dry heave
+        scoreEnd.text = "Your Score: " + tenThous.ToString() + thous.ToString() + hund.ToString() + tens.ToString() + singleNum.ToString();
     }
 
 }

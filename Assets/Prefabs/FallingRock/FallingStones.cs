@@ -5,7 +5,6 @@ using UnityEngine;
 public class FallingStones : MonoBehaviour
 {
     public GameObject Rock;
-    public GameObject Character;
     public Rigidbody2D rockBody;
 
     void Start()
@@ -17,15 +16,8 @@ public class FallingStones : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.tag == "Character")
-        {
+        if(col.gameObject.tag != "Ceiling")
             Destroy(gameObject);
-        }
-
-        if (col.gameObject.tag == "Floor" || col.gameObject.tag == "Character")
-        {
-            Destroy(gameObject);
-        }
     }
 
 }

@@ -14,6 +14,7 @@ public class PlayerScript : MonoBehaviour
     public float thrust;
     public GameObject Floor;
     public Rigidbody2D playerRigid;
+    public static float deathTime;
 
     private void Start()
     {
@@ -43,18 +44,18 @@ public class PlayerScript : MonoBehaviour
 
     public void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.D) && grounded)
-            playerRigid.AddForce(Vector2.right * 6, ForceMode2D.Force);
+        //this should probably use velocity
+        if (Input.GetKey(KeyCode.D) && grounded && Character.transform.position.x < 6)
+            playerRigid.AddForce(Vector2.right * 4, ForceMode2D.Force);
 
         if (Input.GetKey(KeyCode.A) && grounded)
             playerRigid.AddForce(-Vector2.right * 12, ForceMode2D.Force);
     }
 
-   
 
     public void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.tag == "rockboi" || col.gameObject.tag == "fooker")
+        if (col.gameObject.tag == "rockboi" || col.gameObject.tag == "obstacle" || col.gameObject.tag == "deathWall")
         {
             alive = false;
         }
@@ -74,5 +75,6 @@ public class PlayerScript : MonoBehaviour
     void GameOver()
     {
         Time.timeScale = 0;
+        deathTime = Time.time;
     }
 }

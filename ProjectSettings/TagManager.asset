@@ -9,6 +9,9 @@ TagManager:
   - rockboi
   - Character
   - BackGroundFloor
+  - deathWall
+  - obstacle
+  - Ceiling
   layers:
   - Default
   - TransparentFX

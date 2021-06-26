@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 855834419771878698}
   - component: {fileID: -6052346423269220880}
   - component: {fileID: -6596419406308319510}
-  - component: {fileID: 968001443751820428}
+  - component: {fileID: 8417756974840900648}
   m_Layer: 0
   m_Name: Stalagmite
-  m_TagString: Untagged
+  m_TagString: obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,12 +74,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 465eae6c4ea79f141b076d3adced3e12, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7f6b343aa3e3eb44cba85b748481ead8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 4.7, y: 4.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -103,7 +103,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 4.7, y: 4.8}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 4.7, y: 4.8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -132,7 +132,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 6
---- !u!114 &968001443751820428
+--- !u!114 &8417756974840900648
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,11 +141,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1988455048617672840}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b7d0e1239f20a14ea5969ef76146da9, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f47a20b1501a4841a5591c2425f913d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Fecker: {fileID: -6596419406308319510}
-  Fecker1: {fileID: 1988455048617672840}
-  Fooker: {fileID: 329134565731867816, guid: d991e888c39246c49adf63f110d43fe6, type: 3}
-  Fooker1: {fileID: 329134565731867816, guid: d991e888c39246c49adf63f110d43fe6, type: 3}
-  obSpeed: 0
+  rigidbody: {fileID: -6596419406308319510}
+  deathCollider: {fileID: 3353407947340792340, guid: 32269233af5255c47bd5dad7504bd13b, type: 3}

@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 412620510329882880}
   - component: {fileID: 2065863054892572476}
   - component: {fileID: 5023361183264394220}
-  - component: {fileID: -22685495379786374}
-  - component: {fileID: -2740266120497678960}
+  - component: {fileID: 8630570679446628481}
+  - component: {fileID: -4107660426677903440}
   m_Layer: 0
   m_Name: StalagtiteImage
-  m_TagString: Untagged
+  m_TagString: obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1175919975159649493}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.43, y: -1.38, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 2.2056, y: -0.4471, z: 0}
+  m_LocalScale: {x: 0.54, y: 0.6113, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -74,12 +74,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 51b181a4b72aa5d46a74830fa1a72d43, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 23fda4c3415c22b42b2f2d7827936611, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 4.7, y: 4.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -103,7 +103,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 4.7, y: 4.8}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 4.7, y: 4.8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -111,7 +111,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.447969, y: 4.650949}
   m_EdgeRadius: 0
---- !u!50 &-22685495379786374
+--- !u!114 &8630570679446628481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175919975159649493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f47a20b1501a4841a5591c2425f913d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidbody: {fileID: -4107660426677903440}
+  deathCollider: {fileID: 3353407947340792340, guid: 32269233af5255c47bd5dad7504bd13b, type: 3}
+--- !u!50 &-4107660426677903440
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -126,26 +140,9 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 6
---- !u!114 &-2740266120497678960
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1175919975159649493}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b7d0e1239f20a14ea5969ef76146da9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Fecker: {fileID: -22685495379786374}
-  Fecker1: {fileID: 1175919975159649493}
-  Fooker: {fileID: 329134565731867816, guid: d991e888c39246c49adf63f110d43fe6, type: 3}
-  Fooker1: {fileID: 329134565731867816, guid: d991e888c39246c49adf63f110d43fe6, type: 3}
-  obSpeed: 0
+  m_Constraints: 4

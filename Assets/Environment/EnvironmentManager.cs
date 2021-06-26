@@ -24,10 +24,10 @@ public class EnvironmentManager : MonoBehaviour
 
     void Update()
     {
-        if (Time.timeScale >= 1 && pause == false)
+        if (Time.timeScale >= 1 && !pause)
             StopCoroutine("FadeIn");
 
-        offset = Time.time;
+        offset = Time.timeSinceLevelLoad;
 
         ScrollTexture(0, 0.01f);    // BackGround  
         ScrollTexture(1, 0.3f);     // BackGround Detail
@@ -53,7 +53,7 @@ public class EnvironmentManager : MonoBehaviour
     {
         while (true)
         {
-            yield return Time.timeScale = startup + Time.time;
+            yield return Time.timeScale = startup + Time.timeSinceLevelLoad - PlayerScript.deathTime;
         }
 
     }
